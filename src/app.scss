@@ -1,0 +1,17 @@
+#app { 
+    height: 100vh; 
+    background-color: var(--purple); // Changeable
+    overflow: hidden;
+}
+
+.topbar-region { 
+    width: 100%; 
+    height: 63px;
+    background-color: var(--dark-theme-primary); // Changeable (based on theme)
+    border-bottom: 3px solid var(--purple); // Changeable theme
+}
+
+.bottombar-region { 
+    width: 100%; 
+    height: calc(100% - 63px);
+}
