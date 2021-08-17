@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Loop&display=swap');
+
+:root { 
+  /*Relative Font Size*/
+  font-size: 16px;
+
+  /*Logo Colours*/
+  --white: rgb(255, 255, 255);
+  --purple: rgb(121, 80, 242);
+  --pink: rgb(241, 82, 163);
+  --dark-pink: rgb(243, 19, 49);
+  --dark-pink-hover: rgba(243, 19, 49, 0.8);
+  --blue: rgb(44, 55, 170); 
+  --orange: rgb(242, 165, 31);
+  --green: rgb(54, 181, 173);
+  --dark-green: rgb(0, 228, 102);
+  --dark-green-hover: rgba(0, 228, 102, 0.8);
+  --gray: rgb(54, 57, 63);
+
+  /*Light Theme Colours*/
+  --light-theme-primary: rgb(242, 244, 245);
+  --light-theme-secondary: rgb(243, 244, 246);
+  --light-theme-tertiary: rgb(250, 251, 253);
+  --light-theme-quaternary: rgb(231, 231, 229);
+  --light-theme-quintenary: rgb(60, 60, 60);
+
+  /*Dark Theme Colours*/
+  --dark-theme-primary: rgb(60, 60, 60);
+  --dark-theme-secondary: rgb(51, 51, 51);
+  --dark-theme-tertiary: rgb(37, 37, 37);
+  --dark-theme-quaternary: rgb(30, 30, 30);
+  --dark-theme-quintenary: rgb(242, 244, 245);
+  --dark-theme-senary: rgba(37, 37, 37, 0.8);
+  --dark-theme-septnary: rgba(60, 60, 60, 0.6);
+}
+
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box;
+  font-family: 'Zen Loop', cursive;
+  user-select: none;
+}
