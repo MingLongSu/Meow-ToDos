@@ -1,0 +1,28 @@
+.app-title__title { 
+    width: 100%; 
+    height: 100%; 
+    display: flex; 
+    flex-direction: column;
+}
+
+.title__name { 
+    width: 100%; 
+    height: 33px;
+    color: var(--dark-theme-quintenary); // Changeable (based on theme)
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.title__line { 
+    width: 0%; 
+    height: 2px;
+    background-color: var(--dark-theme-quintenary); // Changeable (based on theme)
+    border-radius: 25px; 
+    transition: 500ms ease;
+
+    &.active { 
+        width: 100%;
+    }
+}
