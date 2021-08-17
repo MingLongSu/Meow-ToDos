@@ -5,7 +5,7 @@ import './folderView.scss'
 
 import localStorageAPI from '../../localStorageAPI'
 
-export default function FolderView() {
+export default function FolderView({ setOpenUpdateNoteModal, notesModalTitleRef, notesModalContentRef }) {
     const viewHistory = useHistory()
 
     const folder = getFolder()
@@ -32,24 +32,58 @@ export default function FolderView() {
         folder.notes.forEach(note => { 
             folderNotesHTML.push(noteToHTML(note))
         })  
+
+        return folderNotesHTML
     }
 
     function noteToHTML(note) { 
+        const folderViewNoteTitleLength = 100 
+
         return (
-            <div className='note-base'>
-                <div className='note-base__note-title-container'>
+            <div onClick={ onNoteSelect } key={ note.id } data-note-id={ note.id } className='open-folder-note-base'>
+                <div className='open-folder-note-base__note-title-container'>
                     <div className='note-title-container__note-svg'>
                         <i class="fas fa-sticky-note"></i>
                     </div>
                     <div className='note-title-container__note-name'>
-                        { note.title }
-                    </div>
+                        { note.title.length > folderViewNoteTitleLength ? note.title.substring(0, folderViewNoteTitleLength) + '...' : note.title }
+                    </div>  
                     <div className='note-title-container__note-timestamp'>
-                        { note.timestamp }
+                        { new Date(note.timestamp).toLocaleDateString('en-CA', { weekday: 'long', day: 'numeric', month: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' }) }
                     </div>
                 </div>
             </div>
         )
+    }
+
+    function onNoteSelect(e) { 
+        let noteId = ''
+        if (e.target.className == 'open-folder-note-base') { 
+            noteId = e.target.dataset.noteId
+        } 
+        else if (e.target.parentElement.className == 'open-folder-note-base') { 
+            noteId = e.target.parentElement.dataset.noteId
+        }
+        else if (e.target.parentElement.parentElement.className == 'open-folder-note-base') { 
+            noteId = e.target.parentElement.parentElement.dataset.noteId
+        }
+        else { 
+            noteId = e.target.parentElement.parentElement.parentElement.dataset.noteId
+        }
+
+        const allNotes = localStorageAPI.getAllNotes()
+
+        const selectedNote = allNotes.find(note => note.id == noteId)
+        
+        onNoteEdit(selectedNote)
+    }
+
+    function onNoteEdit(selectedNote) { 
+        notesModalTitleRef.current.dataset.selectedNoteId = selectedNote.id
+        notesModalContentRef.current.dataset.selectedNoteId = selectedNote.id
+        notesModalTitleRef.current.value = selectedNote.title
+        notesModalContentRef.current.value = selectedNote.content
+        setOpenUpdateNoteModal(true)
     }
 
     return (
