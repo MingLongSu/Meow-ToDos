@@ -17,23 +17,23 @@
 .folder-view__folder-container { 
     width: 1356px;
     height: 700px;
-    background-color: pink;
+    background-color: var(--dark-theme-secondary); // Changeable based on theme
     border-radius: 10px; 
 }
 
 .folder-container__folder-header-container { 
     width: 100%; 
-    height: 70px;
-    background-color: blue; 
+    height: 80px;
     border-radius: 10px 10px 0 0;   
 }
 
 .folder-header-container__folder-name-container { 
     width: 100%; 
-    height: 42.5px;
+    height: 47.5px;
     display: flex; 
     flex-direction: row;
     align-items: center;
+    border-bottom: 2px solid var(--purple) // Changeable
 }
 
 .folder-name-container__folder-name {
@@ -44,15 +44,15 @@
 
 .folder-header-container__note-info-tab { 
     width: 100%; 
-    height: 27.5px; 
-    background-color: red;
+    height: 32.5px; 
     display: flex; 
     flex-direction: row;
     align-items: center;
+    border-bottom: 2px solid var(--purple); // Changeable (based on theme)
 }
 
 .note-info-tab__note-name-container { 
-    margin-left: 20px; 
+    margin-left: 40px; 
     width: 200px; 
     display: flex; 
     flex-direction: row; 
@@ -60,5 +60,64 @@
 }
 
 .note-name-container__note-name { 
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.note-info-tab__note-timestamp-container { 
+    margin-left: auto; 
+    margin-right: 142.5px;
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+}
+
+.note-timestamp-container__note-timestamp { 
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.folder-container__folder-notes-root { 
+    width: 100%; 
+    height: calc(100% - 80px);
+    border-radius: 0 0 10px 10px;   
+    overflow: hidden;
+}
+
+.open-folder-note-base { 
+    width: 100%; 
+    height: 40px;
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+    border-bottom: 2px solid var(--purple); // Changeable
+}
+
+.open-folder-note-base__note-title-container { 
+    cursor: pointer;
+    width: 100%; 
+    height: 100%; 
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+    transition: background-color 250ms ease;
+}
+
+.open-folder-note-base__note-title-container:hover { 
+    background-color: var(--dark-theme-primary); // Changeable (based on theme)
+}
+
+.note-title-container__note-svg { 
+    margin: 0 10px;
+    font-size: 1.4rem;
+}
+
+.note-title-container__note-name { 
+    font-size: 1.4rem;
+}
+
+.note-title-container__note-timestamp { 
+    margin-left: auto;
+    margin-right: 20px;
     font-size: 1.4rem;
 }

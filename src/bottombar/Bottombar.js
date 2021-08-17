@@ -15,7 +15,7 @@ import ThisYear from './thisYear/ThisYear'
 import Notes from './notes/Notes'
 import FolderView from './folderView/FolderView'
 import UpdateNoteModal from './updateNoteModal/UpdateNoteModal'
-import UpdateFolderModal from './updateFolderModal/UpdateFolderModal'
+import UpdateFolderModal from './updateFolderModal/UpdateFolderModal' 
 
 export default function Bottombar({ openMenu, openUpdateNoteModal, setOpenUpdateNoteModal, openUpdateFolderModal, setOpenUpdateFolderModal, notesModalTitleRef, notesModalContentRef, handleNotesHTML, folderModalTitleRef}) {
     // handles the display of the settings modal
@@ -32,7 +32,7 @@ export default function Bottombar({ openMenu, openUpdateNoteModal, setOpenUpdate
         const targetClassName = e.target.className;
 
         if (targetClassName === exitUpdateNoteModal.current.className) { 
-            setOpenUpdateNoteModal(false)
+            setOpenUpdateNoteModal(false) 
         }
     }
 
@@ -59,7 +59,7 @@ export default function Bottombar({ openMenu, openUpdateNoteModal, setOpenUpdate
                         <Route exact path='/this-month' component={ ThisMonth }/>
                         <Route exact path='/this-year' component={ ThisYear }/>
                         <Route exact path='/notes'> <Notes setOpenUpdateNoteModal={ setOpenUpdateNoteModal } notesModalTitleRef={ notesModalTitleRef } notesModalContentRef={ notesModalContentRef } handleNotesHTML={ handleNotesHTML } folderModalTitleRef={ folderModalTitleRef } setOpenUpdateFolderModal={ setOpenUpdateFolderModal }/> </Route>
-                        <Route path='/notes/folder'> <FolderView /> </Route>
+                        <Route path='/notes/folder'> <FolderView setOpenUpdateNoteModal={ setOpenUpdateNoteModal } notesModalTitleRef={ notesModalTitleRef } notesModalContentRef={ notesModalContentRef } /> </Route>
                     </Switch>
                 </div>
                 <div className={'container__settings-modal-container' + (displaySettingsModal ? ' active' : '')}>
