@@ -1,0 +1,207 @@
+.sidebar__nav-list { 
+    width: 225px; 
+    height: 100%; 
+    display: flex; 
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.nav-list__defaults { 
+    width: 100%; 
+    height: 225px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+}
+
+#defaults__list-container { 
+    margin-top: 10px;
+    width: 100%; 
+    height: 100%; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#list-container__list-item-container { 
+    cursor: pointer;
+    margin: auto; 
+    width: 100%; 
+    height: 40px; 
+    list-style: none; 
+    color: var(--dark-theme-quintenary); // Changeable (based on theme)
+    font-size: 1.75rem;
+    font-weight: bold;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    transition: 250ms ease; 
+}
+
+#list-container__list-item-container:hover { 
+    background-color: var(--dark-theme-primary); // Changeable (based on background)
+}
+
+#list-item-container__list-item { 
+    width: 100%; 
+    height: 30px; 
+    list-style: none; 
+    color: var(--dark-theme-quintenary); // Changeable (based on theme)
+    font-size: 1.75rem;
+}
+
+#nav-list__divider-container { 
+    margin-top: 10px; 
+    width: 100%; 
+    height: 2px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+}
+
+#divider-container__divider { 
+    width: 85%;
+    height: 100%; 
+    background-color: var(--purple);
+}
+
+.nav-list__addables { 
+    width: 100%;
+    height: 55px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+}
+
+#addables__list-container { 
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+}
+
+#list-item__name { 
+    margin-left: 10px;
+}
+
+#list-item__svg-exception { 
+    margin-left: 30px;
+}
+
+#list-item__svg { 
+    margin-left: 33.5px;
+}
+
+.list__home { 
+    &.active { 
+        background-color: var(--dark-theme-primary);
+    }
+}
+
+.list__today { 
+    &.active { 
+        background-color: var(--dark-theme-primary);
+    }
+}
+
+.list__this-week { 
+    &.active { 
+        background-color: var(--dark-theme-primary);
+    }
+}
+
+.list__this-month { 
+    &.active { 
+        background-color: var(--dark-theme-primary);
+    }
+}
+
+.list__this-year { 
+    &.active { 
+        background-color: var(--dark-theme-primary);
+    }
+}
+
+.list__add-note-prompt { 
+    &.active { 
+        background-color: var(--dark-theme-primary); // Changeable (based on theme)
+    }
+}
+
+.nav-list__folders-container {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 100%; 
+    height: 490px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+.folders-container__folder-root { 
+    width: 100%; 
+    height: 100%; 
+    background-color: var(--dark-theme-secondary); // Changeable (based on theme) 
+    overflow-y: scroll; 
+}
+
+.folders-container__folder-root::-webkit-scrollbar { 
+    display: none;
+}
+
+.nav-list__settings { 
+    margin-top: 15px; 
+    width: 100%; 
+    height: 40px;   
+}
+
+.settings__settings-container { 
+    &.active { 
+        background-color: var(--dark-theme-senary); // Changeable (based on theme)
+    }
+}
+
+.sidebar-folder-base { 
+    cursor: pointer;
+    margin: 10px auto 0 auto;
+    width: 185px; 
+    height: 47.5px;
+    background-color: var(--dark-theme-primary); // Changeable (based on theme)
+    border-radius: 10px;
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 250ms ease; 
+}
+
+.sidebar-folder-base:hover { 
+    box-shadow: 0 0 8px 5px var(--dark-theme-quaternary); // Changeable (based on theme)
+}
+
+.sidebar-folder-base__sidebar-folder-title-container { 
+    width: 95%; 
+    height: 23.75px;
+    color: var(--dark-theme-quintenary); // Changeable (based on theme)
+    font-size: 1.5rem;
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+}
+
+.sidebar-folder-title-container__sidebar-folder-svg { 
+    width: 50px;
+    text-align: center;
+}
+
+.sidebar-folder-title-container__sidebar-folder-name { 
+    width: 107.25px;
+}
