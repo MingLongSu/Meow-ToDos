@@ -1,0 +1,340 @@
+// MAIN VIEW (START)
+
+.main-view__notes-view { 
+    width: 100%; 
+    height: 100%;
+    overflow: hidden; 
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+// MAIN VIEW (END)
+
+// NOTES VIEW DIVIDER (START)
+
+.notes-view__divider { 
+    width: 2px;
+    height: 85%;
+    background-color: var(--purple); // Changeable
+}
+
+// NOTES VIEW DIVIDER (END)
+
+// NOTES VIEW (START)
+
+.notes-view__notes-view { 
+    width: 80%; 
+    height: 87.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.notes-view__notes-view::-webkit-scrollbar { 
+    display: none;
+}
+
+// NOTES VIEW (START)
+
+// MAIN CONTAINERS (START) // NOTE: EACH NOTE AND FOLDER MAY BE 200 PX IN WIDTH //
+
+#notes-view__main-containers { 
+    width: 1356px;
+    overflow: hidden; 
+}
+
+.notes-view__recent-notes-container { 
+    height: 200px;
+}
+
+.notes-view__folders-container { 
+    height: 125px;
+}
+
+.notes-view__all-notes-container { 
+    height: 400px;
+}
+
+// MAIN CONTAINERS (END)
+
+// HEADER CONTAINERS (START)
+
+#main-containers__header-containers { 
+    margin-left: 40px;
+    width: 200px; 
+    height: 25px;
+    background-color: var(--dark-theme-secondary); // Changeable ((based on theme))
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 7.5px 7.5px 0 0;
+}
+
+    // HEADER CONTAINER NAMES (START)
+
+    #header-containers__names { 
+        margin-top: 2.5px;
+        width: calc(100% - 50px);
+        height: 100%;
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+
+    // HEADER CONTAINER NAMES (END)
+
+    // HEADER PSEUDO COMPONENTS CONTAINERS (START) 
+    
+    #header-containers__pseudo-components-left-container {
+        width: 25px;
+        height: 25px; 
+        background-color: var(--dark-theme-secondary); // Changeable (based on theme)
+        transform: translateX(-25px);
+    }
+
+    #header-containers__pseudo-components-right-container {
+        width: 25px;
+        height: 25px; 
+        background-color: var(--dark-theme-secondary); // Changeable (based on theme)
+        transform: translateX(25px);
+    }
+
+        // HEADER PSEUDO COMPONENT (START)
+
+        #pseudo-components-left-container__pseudo-component-left { 
+            width: 100%; 
+            height: 100%; 
+            background-color: var(--dark-theme-tertiary); // Changeable (based on theme)
+            border-radius: 0 0 7.5px 0;
+        }
+
+        #pseudo-components-right-container__pseudo-component-right { 
+            width: 100%; 
+            height: 100%; 
+            background-color: var(--dark-theme-tertiary); // Changeable (based on theme)  
+            border-radius: 0 0 0 7.5px;
+        }
+
+        // HEADER PSEUDO COMPONENT (END)    
+
+    // HEADER PSEUDO COMPONENTS CONTAINERS (END) 
+
+// HEADER CONTAINERS (END)
+
+// MAIN CONTAINERS ROOT CONTAINERS (START)
+
+#main-containers__root-containers { 
+    width: 100%;
+    height: calc(100% - 25px);
+    background-color: var(--dark-theme-secondary); // Changeable (based on theme)
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7.5px;
+}
+
+// MAIN CONTAINERS ROOT CONTAINERS (END)
+
+// MAIN CONTAINERS TRUE ROOTS (START)
+
+#root-containers__roots { 
+    width: 100%; 
+    background-color: var(--dark-theme-secondary); //Changeable (based on theme)
+}
+
+.notes-root-container__notes-root { 
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.folders-root-container__folders-root { 
+    height: 75px;
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+}
+
+.all-notes-root-container__all-notes-root-pseudo { 
+    width: 100%;
+    height: 350px;
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center;
+}
+
+.all-notes-root-pseudo__real-root { 
+    width: 100%; 
+    height: calc(100% - 35px);
+    display: grid; 
+    gap: 22.5px;
+    grid-template-columns: repeat(6, 200px);
+    grid-template-rows: repeat(2, 125px);
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.all-notes-root-pseudo__real-root::-webkit-scrollbar { 
+    display: none;
+}
+
+// MAIN CONTAINERS TRUE ROOTS (END) (MARGIN LEFT OF 22.5PX IS PERFECT) (125 PX for notes, 35PX for folders)
+
+.note-base { 
+    cursor: pointer;
+    margin-left: 22.5px; 
+    width: 200px;
+    height: 125px; 
+    background-color: var(--dark-theme-primary); // Changeable (based on theme)
+    border-radius: 10px;
+    transition: box-shadow 250ms ease;
+}
+
+.note-base:hover { 
+    box-shadow: 0 0 8px 5px var(--dark-theme-quaternary); // Changeable (based on theme)
+}
+
+.note-base__content { 
+    padding: 10px;
+    width: 100%;
+    height: 75px;
+    border-radius: 10px 10px 0 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.note-base__header { 
+    background-color: var(--dark-theme-tertiary); // Changeable (based on theme)
+    width: 100%; 
+    height: 50px;
+    border-radius: 0 0 10px 10px;
+}
+
+.header__title { 
+    padding: 1px 10px 0 10px; 
+    width: 100%;
+    height: 30px;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.header__timestamp { 
+    padding: 1px 10px;
+    width: 100%; 
+    height: 20px; 
+}
+
+.folder-base { 
+    cursor: pointer;
+    margin-left: 22.5px; 
+    width: 200px; 
+    height: 47.5px;
+    background-color: var(--dark-theme-primary); // Chnageable (based on theme)
+    border-radius: 10px;
+    transition: box-shadow 250ms ease;
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark-theme-quintenary); // Changeable (based on theme)
+}
+
+.folder-base:hover { 
+    box-shadow: 0 0 8px 5px var(--dark-theme-quaternary); // Changeable (based on theme)
+}
+
+.folder-base__folder-title-container { 
+    width: 175px;
+    height: 23.75px;
+    font-size: 1.5rem;  
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+}
+
+.folder-title-container__folder-svg { 
+    width: 50px;
+    text-align: center;
+}
+
+.folder-title-container__folder-name { 
+    width: 100px;
+}
+
+.test2 { 
+    margin-left: 22.5px;
+    width: 200px; 
+    height: 47.5px; 
+    background-color: var(--dark-theme-primary); // Changeable (based on theme)
+}
+
+#options-container { 
+    position: absolute;
+    top: 0; 
+    left: 0; 
+}
+
+.notes-view__folder-options-container {
+    display: none;
+    
+    &.active { 
+        display: block;
+    }
+}
+
+.notes-view__notes-options-container { 
+    display: none; 
+
+    &.active { 
+        display: block;
+    }
+}
+
+#options-container__option { 
+    cursor: pointer;
+    width: 160px; 
+    height: 40px; 
+    background-color: var(--dark-theme-quaternary); // Changeable (based on theme)
+}
+
+#options-container__option:hover { 
+    background-color: rgba(30, 30, 30, 0.85);
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+}
+
+#options-container__option { 
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+}
+
+#option__svg { 
+    margin: 0 5px;
+    font-size: 1.4rem; 
+}
+
+#option__name { 
+    margin-left: 10px;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.notes-view__move-to-folder-options-root { 
+    display: none; 
+
+    &.active { 
+        display: block;
+    }
+}
+

@@ -1,0 +1,111 @@
+.bottombar-region__container { 
+    width: 100%; 
+    height: 100%;
+    display: flex; 
+    flex-direction: row; 
+}
+
+.container__sidebar { 
+    width: 0px; 
+    height: 100%;
+    background-color: var(--dark-theme-secondary); // Changeable (based on theme)
+    transition: 500ms ease;
+    border-radius: 0 10px 10px 0;
+
+    &.active { 
+        width: 225px; 
+    }
+}
+
+.container__main-view { 
+    width: 100%; 
+    height: 100%;
+    background-color: var(--dark-theme-tertiary); // Changeable (based on theme)
+    transition: 500ms ease;
+    color: white; // TEST
+    border-radius: 10px 0 0 10px;
+}
+
+.container__settings-modal-container { 
+    display: none; // Display changeable
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    background: var(--dark-theme-senary); // Changeable (based on theme)
+    transition: 2000ms ease;
+
+    &.active { 
+        display: block;
+    }
+}
+
+.settings-modal-container__settings-modal { 
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    width: 500px; 
+    height: 400px;
+    transform: translate(-50%, -50%);
+    background-color: var(--dark-theme-tertiary); // Changeable (based on theme)
+    border-radius: 10px;
+}
+
+.container__update-note-modal-container { 
+    display: none;
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: var(--dark-theme-senary); // Changeable (based on theme)
+    z-index: 1000;
+
+    &.active { 
+        display: block;
+    }
+}
+
+.update-note-modal-container__update-note-modal { 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    width: 750px; 
+    height: 500px;
+    transform: translate(-50%, -50%);
+    background-color: var(--dark-theme-secondary); // Changeable (based on theme)
+    border-radius: 10px;
+    box-shadow: 0 0 25px 8px var(--dark-theme-quaternary); // Changeable (based on theme)
+}
+
+.container__update-folder-modal-container { 
+    display: none;
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-color: var(--dark-theme-senary); // Changeable (based on theme)
+    z-index: 1000;
+
+    &.active { 
+        display: block;
+    }
+}
+
+.update-folder-modal-container__update-folder-modal { 
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    width: 750px; 
+    height: 75px;
+    background-color: var(--dark-theme-secondary); // Changeable (based on theme)
+    border-radius: 10px; 
+    box-shadow: 0 0 25px 8px var(--dark-theme-quaternary); // Changeable (based on theme)
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
