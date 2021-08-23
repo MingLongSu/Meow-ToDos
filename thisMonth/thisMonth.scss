@@ -30,6 +30,8 @@
 
     box-shadow: 0 0 5px 8px var(--dark-theme-quaternary); // Changeable (based on theme)
     border-radius: 25px 25px 0 0;
+
+    float: left;
 }
 
 .thismonth-calendar-container__thismonth-calendar-content-container { 

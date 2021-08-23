@@ -1,4 +1,10 @@
+import React from "react"
+
 class calendarAPI { 
+    static getYearMonths() { 
+        return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    }
+
     static getWeekdays() { 
         return ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     }
@@ -13,6 +19,10 @@ class calendarAPI {
 
     static getThisMonthString() { 
         return new Date().toLocaleDateString('en-CA', { month: 'long' })
+    }
+
+    static getMonthString(monthIndex) { 
+        return new Date(this.getThisYearIndex(), monthIndex, 1).toLocaleDateString('en-CA', { month: 'long' })
     }
 
     static getThisYearIndex() { 
@@ -38,16 +48,19 @@ class calendarAPI {
         return new Date(thisYear, thisMonth, thisDay).toLocaleDateString('en-CA', { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' })
     }
 
+    /*
     static addFirstEmptyDays(thisMonthCalendarDaysHTML, firstDayIndex, monthFirstDayString) { 
         const prevEmptyDay = this.getThisDate(monthFirstDayString)
+
         const currentEmptyDayString = this.getThisDateString(prevEmptyDay.year, prevEmptyDay.month, prevEmptyDay.date - 1)
 
         if (firstDayIndex > 0) { 
             thisMonthCalendarDaysHTML.push(this.emptyDayToHTML(currentEmptyDayString))
-
+            
             return this.addFirstEmptyDays(thisMonthCalendarDaysHTML, firstDayIndex - 1, currentEmptyDayString)
         }
-        else { 
+        else {
+
             thisMonthCalendarDaysHTML.reverse() 
         }
     }
@@ -98,8 +111,26 @@ class calendarAPI {
     static calendarDayToHTML(currentCalendarDayString) { 
         const currentCalendarDay = this.getThisDate(currentCalendarDayString)
 
+        function openDate(e) { 
+            const target = e.target
+
+            const targetFullDate = findFullDate(target)
+
+            console.log(targetFullDate)
+
+            function findFullDate(target) { 
+                if (target.className !== 'thismonth-day-base') { 
+                    return findFullDate(target.parentElement)
+                }
+                else { 
+                    return target.dataset.fullDate
+                }
+            }
+
+        }
+
         return ( 
-            <div key={ currentCalendarDayString.split(', ')[1] } className='thismonth-day-base'>
+            <div onClick={ openDate } data-full-date={ currentCalendarDayString.split(', ')[1] } key={ currentCalendarDayString.split(', ')[1] } className='thismonth-day-base'>
                 <div className='thismonth-day-base__day-contents-container'>
                     <div className='day-contents-container__day-header-container'>
                         <span className='day-header-container__date'> { currentCalendarDay.date } </span>
@@ -113,6 +144,7 @@ class calendarAPI {
             </div>
         )
     }
+    */
 
     static getWeekdaysHTML(weekdays) { 
         const weekdaysHTML = []
@@ -185,7 +217,7 @@ class calendarAPI {
                 const dateKey = new Date(day.year.toString(), day.month.toString(), day.date.toString()).toLocaleDateString('en-CA', { year: 'numeric', month: 'numeric', day: 'numeric' })
 
                 return (
-                    <div data-full-date={ dateKey } key={ dateKey } className='thisweek-day-base'>
+                    <div key={ dateKey } className='thisweek-day-base'>
                         <div className='thisweek-day-base__thisweek-day-header-container'>
                             <div className='thisweek-day-header-container__weekday-container'> 
                                 <div className='weekday-container__weekday'>
@@ -196,6 +228,9 @@ class calendarAPI {
                                 <div className='date-container__date'>
                                     { dateString }
                                 </div>
+                            </div>
+                            <div className='thisweek-day-header-container__add-event-button'>
+                                <i data-full-date={ dateKey } class="fas fa-plus-circle add-event-button__svg"></i>
                             </div>
                         </div>
                         <div className='thisweek-day-base__thisweek-day-events-container'>
@@ -272,6 +307,7 @@ class calendarAPI {
         }
     }
 
+    /*
     // gets the weeks of the current month
     static getThisMonth() { 
         const thisMonthCalendarDaysHTML = []
@@ -287,14 +323,79 @@ class calendarAPI {
         const monthLastDay = this.getThisDate(monthLastDayString)
 
         // find the index of the month's first day and the index of the month's last day
-        const firstDayIndex = this.getWeekdayIndex(monthFirstDay.weekday) // number of days to have as empty
+        const firstDayIndex = this.getWeekdayIndex(monthFirstDay.weekday)
         const lastDayIndex = this.getWeekdayIndex(monthLastDay.weekday) // days following will be empty
         
-        this.addFirstEmptyDays(thisMonthCalendarDaysHTML, monthFirstDay, monthFirstDayString)
+        this.addFirstEmptyDays(thisMonthCalendarDaysHTML, firstDayIndex, monthFirstDayString)
         this.addCalendarDays(thisMonthCalendarDaysHTML, monthFirstDay, monthLastDay)
         this.addLastEmptyDays(thisMonthCalendarDaysHTML, 6 - lastDayIndex, monthLastDayString)
 
-       return thisMonthCalendarDaysHTML
+        return thisMonthCalendarDaysHTML
+    }
+    */
+
+    static getThisYear() { 
+        const thisMonthIndex = 0;
+        
+        const thisYearCalendarHTML = []
+
+        this.getCurrentMonth(thisYearCalendarHTML, thisMonthIndex)
+        
+        return thisYearCalendarHTML
+    }
+
+    static getCurrentMonth(thisYearCalendarHTML, thisMonthIndex) { 
+        if (thisMonthIndex < 12) { 
+            const currentMonthCalendarDaysHTML = []
+
+            const thisYear = this.getThisYearIndex() 
+
+            const monthFirstDayString = this.getThisDateString(thisYear, thisMonthIndex, 1)
+            const monthLastDayString = this.getThisDateString(thisYear, thisMonthIndex + 1 % 12, 0)
+
+            const monthFirstDay = this.getThisDate(monthFirstDayString)
+            const monthLastDay = this.getThisDate(monthLastDayString)
+
+            // find the index of the month's first day and the index of the month's last day
+            const firstDayIndex = this.getWeekdayIndex(monthFirstDay.weekday)
+            const lastDayIndex = this.getWeekdayIndex(monthLastDay.weekday) // days following will be empty
+            
+            this.addFirstEmptyDays(currentMonthCalendarDaysHTML, firstDayIndex, monthFirstDayString)
+            this.addCalendarDays(currentMonthCalendarDaysHTML, monthFirstDay, monthLastDay)
+            this.addLastEmptyDays(currentMonthCalendarDaysHTML, 6 - lastDayIndex, monthLastDayString)
+
+            
+            function monthToHTML(currentMonthCalendarDaysHTML, thisMonthIndex) { 
+                const thisMonth = calendarAPI.getMonthString(thisMonthIndex)
+                const weekdaysHTML = calendarAPI.getWeekdaysHTML(calendarAPI.getWeekdays())
+
+                return (
+                    <div key={ thisMonthIndex } className='thismonth-view__thismonth-calendar-container no-box-shadow'>
+                        <div className='thismonth-calendar-container__thismonth-calendar-content-container'>
+                            <div className='thismonth-calendar-container__thismonth-header-container'>
+                                <div className='thismonth-header-container__thismonth-header-content-container'>
+                                    <div className='thismonth-header-container__header-name'>
+                                        { thisMonth }
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='thismonth-calendar-container__calendar-days-container'>
+                                <div className='calendar-days-container__weekdays-container'>
+                                    { weekdaysHTML }
+                                </div>
+                                <div className='calendar-days-container__all-days-container'>
+                                    { currentMonthCalendarDaysHTML }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+
+            thisYearCalendarHTML.push(monthToHTML(currentMonthCalendarDaysHTML, thisMonthIndex))
+
+            return this.getCurrentMonth(thisYearCalendarHTML, thisMonthIndex + 1) 
+        }
     }
 }
 

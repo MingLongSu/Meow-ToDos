@@ -1,12 +1,20 @@
 import React, { useState } from 'react'
+import calendarAPI from '../../calendarAPI'
 
 import './today.scss'
 
-export default function Today() {
+export default function Today({ setOpenUpdateEventModal }) {
+    const today = calendarAPI.getToday()
+    const todayDate = today.split(', ')[1]
+
     const [openSideTab, setOpenSideTab] = useState(false)
     
     function updateOpenSideTab() { 
         setOpenSideTab(prevState => !prevState)
+    }
+
+    function onEventAdd() { 
+        setOpenUpdateEventModal(true)
     }
 
     return (
@@ -31,6 +39,9 @@ export default function Today() {
                             </div>
                             <div className='main-card-date-container__date'>
                                 {new Date().toLocaleDateString('en-CA', { month: 'long', day: 'numeric', 'year': 'numeric' })}
+                            </div>
+                            <div className='main-card-date-container__add-event-button'>
+                                <i onClick={ onEventAdd } data-full-date={ todayDate } class="fas fa-plus-circle add-event-button__svg"></i>
                             </div>
                         </div>
                     </div>
