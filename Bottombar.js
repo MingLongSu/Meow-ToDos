@@ -16,8 +16,10 @@ import Notes from './notes/Notes'
 import FolderView from './folderView/FolderView'
 import UpdateNoteModal from './updateNoteModal/UpdateNoteModal'
 import UpdateFolderModal from './updateFolderModal/UpdateFolderModal' 
+import DayView from './dayView/DayView'
+import UpdateEventModal from './updateEventModal/UpdateEventModal'
 
-export default function Bottombar({ openMenu, openUpdateNoteModal, setOpenUpdateNoteModal, openUpdateFolderModal, setOpenUpdateFolderModal, notesModalTitleRef, notesModalContentRef, handleNotesHTML, folderModalTitleRef}) {
+export default function Bottombar({ openMenu, openUpdateNoteModal, setOpenUpdateNoteModal, openUpdateFolderModal, setOpenUpdateFolderModal, notesModalTitleRef, notesModalContentRef, handleNotesHTML, folderModalTitleRef, openUpdateEventModal, setOpenUpdateEventModal}) {
     // handles the display of the settings modal
     const [displaySettingsModal, setDisplaySettingsModal] = useState(false)
 
@@ -36,13 +38,20 @@ export default function Bottombar({ openMenu, openUpdateNoteModal, setOpenUpdate
         }
     }
 
-    // checks if the update folder moal should be closed
+    // checks if the update folder modal should be closed
     function updateOpenUpdateFolderModal(e) { 
         const targetClassName = e.target.className;
 
         if (targetClassName === exitUpdateFolderModal.current.className) { 
             setOpenUpdateFolderModal(false)
         }
+    }
+
+    // updates to open the set event modal
+    function updateOpenUpdateEventModal(e) { 
+        if (e.target.className === 'container__update-event-modal-container active') { 
+            setOpenUpdateEventModal(prevState => !prevState)
+        }   
     }
 
     return ( 
@@ -54,12 +63,13 @@ export default function Bottombar({ openMenu, openUpdateNoteModal, setOpenUpdate
                 <div className='container__main-view'>
                     <Switch>
                         <Route exact path='/' component={ Home }/>
-                        <Route exact path='/today' component={ Today }/>
+                        <Route exact path='/today'> <Today setOpenUpdateEventModal={ setOpenUpdateEventModal }/> </Route>
                         <Route exact path='/this-week' component={ ThisWeek }/>
                         <Route exact path='/this-month' component={ ThisMonth }/>
                         <Route exact path='/this-year' component={ ThisYear }/>
                         <Route exact path='/notes'> <Notes setOpenUpdateNoteModal={ setOpenUpdateNoteModal } notesModalTitleRef={ notesModalTitleRef } notesModalContentRef={ notesModalContentRef } handleNotesHTML={ handleNotesHTML } folderModalTitleRef={ folderModalTitleRef } setOpenUpdateFolderModal={ setOpenUpdateFolderModal }/> </Route>
                         <Route path='/notes/folder'> <FolderView setOpenUpdateNoteModal={ setOpenUpdateNoteModal } notesModalTitleRef={ notesModalTitleRef } notesModalContentRef={ notesModalContentRef } /> </Route>
+                        <Route path='/calendar/day'> <DayView /> </Route>
                     </Switch>
                 </div>
                 <div className={'container__settings-modal-container' + (displaySettingsModal ? ' active' : '')}>
@@ -75,6 +85,11 @@ export default function Bottombar({ openMenu, openUpdateNoteModal, setOpenUpdate
                 <div ref={ exitUpdateFolderModal } onClick={ updateOpenUpdateFolderModal } className={'container__update-folder-modal-container' + (openUpdateFolderModal ? ' active' : '')}>
                     <div className='update-folder-modal-container__update-folder-modal'>
                         <UpdateFolderModal folderModalTitleRef={ folderModalTitleRef }/>
+                    </div>
+                </div>
+                <div onClick={ updateOpenUpdateEventModal } className={'container__update-event-modal-container' + (openUpdateEventModal ? ' active' : '')}>
+                    <div className='update-event-modal-container__update-event-modal'>
+                        <UpdateEventModal />
                     </div>
                 </div>
             </div>

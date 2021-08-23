@@ -23,6 +23,9 @@ function App() {
   // handles opening the folder upate/edit/create modal
   const [openUpdateFolderModal, setOpenUpdateFolderModal] = useState(false)
 
+  // handles opening the event update/edit modal
+  const [openUpdateEventModal, setOpenUpdateEventModal] = useState(false)
+
   // handles the currently selected note
   const [selectedNote, setSelectedNote] = useState()//localStorageAPI.getAllNotes()[0] || undefined)
 
@@ -49,7 +52,7 @@ function App() {
         <Topbar openMenu={ openMenu } setOpenMenu={ setOpenMenu } setOpenUpdateNoteModal={ setOpenUpdateNoteModal } setOpenUpdateFolderModal={ setOpenUpdateFolderModal } selectedNote={ selectedNote } setSelectedNote={ setSelectedNote } notesModalTitleRef={ notesModalTitleRef } notesModalContentRef={ notesModalContentRef } folderModalTitleRef={ folderModalTitleRef }/>
       </div>
       <div className='bottombar-region'>
-        <Bottombar openMenu={ openMenu } openUpdateNoteModal={ openUpdateNoteModal } setOpenUpdateNoteModal={ setOpenUpdateNoteModal } openUpdateFolderModal={ openUpdateFolderModal } setOpenUpdateFolderModal={ setOpenUpdateFolderModal } notesModalTitleRef={ notesModalTitleRef } notesModalContentRef={ notesModalContentRef } handleNotesHTML={ handleNotesHTML } folderModalTitleRef={ folderModalTitleRef }/>
+        <Bottombar openMenu={ openMenu } openUpdateNoteModal={ openUpdateNoteModal } setOpenUpdateNoteModal={ setOpenUpdateNoteModal } openUpdateFolderModal={ openUpdateFolderModal } setOpenUpdateFolderModal={ setOpenUpdateFolderModal } notesModalTitleRef={ notesModalTitleRef } notesModalContentRef={ notesModalContentRef } handleNotesHTML={ handleNotesHTML } folderModalTitleRef={ folderModalTitleRef } openUpdateEventModal={ openUpdateEventModal } setOpenUpdateEventModal={ setOpenUpdateEventModal }/>
       </div>
     </div>
   );

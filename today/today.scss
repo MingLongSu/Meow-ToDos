@@ -136,7 +136,6 @@
     align-items: center;
 
     margin: 0 30px 0 20px;
-    width: 125px; 
     height: 75%;
 
     font-size: 3rem;
@@ -148,7 +147,6 @@
     flex-direction: row;
     align-items: flex-end;
 
-    width: 200px; 
     height: 75%;
 
     font-size: 2.4rem;
@@ -163,4 +161,27 @@
     background-color: var(--dark-theme-secondary); // Changeable (based on theme)
 
     border-radius: 0 0 10px 10px;
+}
+
+// add event button
+.main-card-date-container__add-event-button { 
+    width: 2.5rem; 
+    height: 2.5rem; 
+    
+    margin-left: auto; 
+    margin-right: 25px;
+}
+
+.add-event-button__svg {
+    font-size: 2.4rem;
+
+    color: var(--purple); // Changeable 
+    filter: grayscale(0.4);
+
+    transition: filter 250ms ease;
+    cursor: pointer;
+}
+
+.add-event-button__svg:hover { 
+    filter: grayscale(0);
 }
